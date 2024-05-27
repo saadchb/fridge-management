@@ -7,7 +7,7 @@
               </div>
               <div class="profile-name">
                 <p class="name">
-                  Welcome SAAD
+                  Bonjour SAAD
                 </p>
                 <p class="designation">
                   Super Admin
@@ -15,24 +15,23 @@
               </div>
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item @if($table == 'dachboard')  active @endif">
             <a class="nav-link" href="/admin/dachboard">
               <i class="fa fa-home menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Acceuil</span>
             </a>
           </li>
       
-          <li class="nav-item">
+          <li class="nav-item  @if($table == 'familles')  active @endif">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
               <i class="fab fa-trello menu-icon"></i>
-              <span class="menu-title">Page Layouts</span>
+              <span class="menu-title">Les Familles</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="boxed-layout.html">Boxed</a></li>
-                <li class="nav-item"> <a class="nav-link" href="rtl-layout.html">RTL</a></li>
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="horizontal-menu.html">Horizontal Menu</a></li>
+                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/familles">Tous les Familles</a></li>
+                <li class="nav-item @if($table == 'familles')  active @endif"> <a class="nav-link" href="/familles/create">Ajouteé Famille</a></li>
               </ul>
             </div>
           </li>

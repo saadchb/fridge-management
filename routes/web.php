@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FamilleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,6 @@ Route::get('/', function () {
 });
 Route::get('/admin/dachboard', function () {
     $table = 'dachboard';
-    return view('Backend.dachboard', compact('table'));})->name('admin.dachboard');
+    return view('Backend.dachboard', compact('table'));
+})->name('admin.dachboard');
+Route::resource('familles', FamilleController::class);

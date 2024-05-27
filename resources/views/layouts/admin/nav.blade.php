@@ -23,11 +23,7 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <span class="btn btn-primary">+ Create new</span>
-            </a>
-          </li>
+         @yield('button_create')
           <li class="nav-item dropdown d-none d-lg-flex">
             <div class="nav-link">
               <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">English</span>
