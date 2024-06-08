@@ -166,10 +166,15 @@
                 Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item">
+              <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+              <a class="dropdown-item" href="{{route('logout')}}"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" >
                 <i class="fas fa-power-off text-primary"></i>
                 Logout
               </a>
+              </form>
             </div>
           </li>
  
