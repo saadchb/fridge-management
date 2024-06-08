@@ -15,7 +15,7 @@
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fa fa-user mr-2"></i>
-                          New users
+                          Clients
                         </p>
                         <h2>54000</h2>
                         <label class="badge badge-outline-success badge-pill">2.7% increase</label>
@@ -23,7 +23,7 @@
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                          Avg Time
+                          Produits entres
                         </p>
                         <h2>123.50</h2>
                         <label class="badge badge-outline-danger badge-pill">30% decrease</label>
@@ -31,7 +31,7 @@
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                          Downloads
+                          prdouits sortie
                         </p>
                         <h2>3500</h2>
                         <label class="badge badge-outline-success badge-pill">12% increase</label>
@@ -39,7 +39,7 @@
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
-                          Update
+                          Produits
                         </p>
                         <h2>7500</h2>
                         <label class="badge badge-outline-success badge-pill">57% increase</label>

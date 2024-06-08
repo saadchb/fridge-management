@@ -7,10 +7,10 @@
               </div>
               <div class="profile-name">
                 <p class="name">
-                  Bonjour SAAD
+                  Bonjour {{ Auth::user()->name }}
                 </p>
                 <p class="designation">
-                  Super Admin
+                  Vendeur
                 </p>
               </div>
             </div>
