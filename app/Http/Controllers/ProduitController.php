@@ -24,7 +24,7 @@ class ProduitController extends Controller
     {
         $request->validate([
             'designation' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validation de l'image
             'famille_id' => 'required|exists:familles,id',
         ]);
 
@@ -37,7 +37,7 @@ class ProduitController extends Controller
 
         Produit::create($validatedData);
 
-        return redirect()->route('produits.index')->with('success', 'Produit Bien ajouté .');
+        return redirect()->route('produits.index')->with('success', 'Produit ajouté avec succès.');
     }
 
     public function show(Produit $produit)
@@ -60,12 +60,13 @@ class ProduitController extends Controller
 
         $produit->update($request->only('designation', 'famille_id'));
 
-        return redirect()->route('produits.index')->with('success', 'Produit bien modifié .');
+        return redirect()->route('produits.index')->with('success', 'Produit mis à jour avec succès.');
     }
 
     public function destroy(Produit $produit)
     {
         $produit->delete();
-        return redirect()->route('produits.index')->with('success', 'Produit Bien supprimé.');
+
+        return redirect()->route('produits.index')->with('success', 'Produit supprimé avec succès.');
     }
 }

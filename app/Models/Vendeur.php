@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Vendeur extends Model
+class Vendeur extends Authenticatable
 {
+    use Notifiable;
     use HasFactory;
     protected $fillable = [
         'nom',
@@ -25,4 +28,5 @@ class Vendeur extends Model
         'email_verified_at' => 'datetime',
     ];
 
+   
 }

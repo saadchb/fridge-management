@@ -10,33 +10,32 @@ class FamilleController extends Controller
     public function index()
     {
         $familles = Famille::all();
-        return view('familles.index', compact('familles'));
+        $table ='familles';
+
+        return view('Backend.familles.index', compact('familles','table'));
     }
 
     public function create()
     {
-        return view('familles.create');
+        $table ='familles';
+
+        return view('Backend.familles.create',compact('table'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'famille' => 'required|string|max:255',
-        ]);
         Famille::create($request->all());
-        return redirect()->route('familles.index')->with('success', 'Famille Bien ajoutée .');
+        return redirect()->route('familles.index')->with('success', 'Famille ajoutée avec succès.');
     }
 
     public function edit(Famille $famille)
     {
-        return view('familles.edit', compact('famille'));
+        return view('Backend.familles.edit', compact('famille'));
     }
-
     public function show(Famille $famille)
     {
-        return view('familles.show', compact('famille'));
+        return view('Backend.familles.show', compact('famille'));
     }
-
     public function update(Request $request, Famille $famille)
     {
         $request->validate([
@@ -45,12 +44,12 @@ class FamilleController extends Controller
     
         $famille->update($request->all());
     
-        return redirect()->route('familles.index')->with('success', 'Famille Bien modifiée.');
+        return redirect()->route('familles.index')->with('success', 'Famille mise à jour avec succès.');
     }
 
     public function destroy(Famille $famille)
     {
         $famille->delete();
-        return redirect()->route('familles.index')->with('success', 'Famille Bien supprimée .');
+        return redirect()->route('familles.index')->with('success', 'Famille supprimée avec succès.');
     }
 }
