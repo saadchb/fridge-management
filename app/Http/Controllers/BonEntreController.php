@@ -14,18 +14,22 @@ class BonEntreController extends Controller
 {
     public function index()
     {
+        $table = 'entree';
         $bonentres = BonEntre::with('vendeur')->get();
         $details = DetailBonEntre::all();
-        return view('bonentres.index', compact('bonentres', 'details'));
+        $vendeurs = Vendeur::all();
+        return view('Backend.bonentres.index', compact('bonentres', 'details','table','vendeurs'));
     }
 
     public function create()
     {
+        $table = 'entree';
+
         $vendeurs = Vendeur::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
         $bonentres = BonEntre::all();
-        return view('bonentres.create', compact('vendeurs','bonentres','conditionnements','produits'));
+        return view('Backend.bonentres.create', compact('vendeurs','bonentres','conditionnements','produits','table'));
     }
 
     public function store(Request $request)
@@ -63,63 +67,67 @@ class BonEntreController extends Controller
             ]);
         }
 
-        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée créé avec succès.');
+        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée créé avec succès.');
     }
 
 
     public function show(BonEntre $bonEntre)
     {
-        return view('bonentres.show', compact('bonEntre'));
+        $table = 'entree';
+
+        return view('Backend.bonentres.show', compact('bonEntre','table'));
     }
 
     public function edit(BonEntre $bonEntre)
     {
+        $table = 'entree';
+
         $vendeurs = Vendeur::all();
-        return view('bonentres.edit', compact('bonEntre', 'vendeurs'));
+        return view('Backend.bonentres.edit', compact('bonEntre', 'vendeurs','table'));
     }
 
     public function update(Request $request, BonEntre $bonEntre)
     {
         $bonEntre->update($request->all());
-        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée mis à jour avec succès.');
+        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée mis à jour avec succès.');
     }
 
     public function destroy(BonEntre $bonEntre)
     {
         $bonEntre->delete();
-        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée supprimé avec succès.');
+        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée supprimé avec succès.');
     }
 
     public function createDetail()
     {
-        return view('detail_bon_entre.create');
+        return view('Backend.detail_bon_entre.create');
     }
 
     public function storeDetail(Request $request)
     {
         DetailBonEntre::create($request->all());
-        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée ajouté avec succès.');
+        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée ajouté avec succès.');
     }
 
     public function showDetail(DetailBonEntre $detailBonEntre)
     {
-        return view('detail_bon_entre.show', compact('detailBonEntre'));
+        return view('Backend.detail_bon_entre.show', compact('detailBonEntre'));
     }
 
     public function editDetail(DetailBonEntre $detailBonEntre)
     {
-        return view('detail_bon_entre.edit', compact('detailBonEntre'));
+        return view('Backend.detail_bon_entre.edit', compact('detailBonEntre'));
     }
 
     public function updateDetail(Request $request, DetailBonEntre $detailBonEntre)
     {
         $detailBonEntre->update($request->all());
-        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée mis à jour avec succès.');
+        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée mis à jour avec succès.');
     }
 
     public function destroyDetail(DetailBonEntre $detailBonEntre)
     {
         $detailBonEntre->delete();
-        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée supprimé avec succès.');
+        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée supprimé avec succès.');
     }
 }

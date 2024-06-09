@@ -11,14 +11,12 @@ class FamilleController extends Controller
     {
         $familles = Famille::all();
         $table ='familles';
-
         return view('Backend.familles.index', compact('familles','table'));
     }
 
     public function create()
     {
         $table ='familles';
-
         return view('Backend.familles.create',compact('table'));
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vendeur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class VendeurController extends Controller
 {
@@ -36,8 +37,10 @@ class VendeurController extends Controller
 
     public function update(Request $request, Vendeur $vendeur)
     {
+     
+
         $vendeur->update($request->all());
-        return redirect()->route('vendeurs.index')->with('success', 'Vendeur mis à jour avec succès.');
+        return Redirect::route('profile.edit');
     }
 
     public function destroy(Vendeur $vendeur)

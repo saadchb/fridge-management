@@ -26,23 +26,20 @@
          @yield('button_create')
           <li class="nav-item dropdown d-none d-lg-flex">
             <div class="nav-link">
-              <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">English</span>
+              <span class="dropdown-toggle btn btn-outline-dark" id="languageDropdown" data-toggle="dropdown">Ajoutée un bon...</span>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                <a class="dropdown-item font-weight-medium" href="#">
-                  French
+                <a class="dropdown-item font-weight-medium" href="{{route('bonentres.create')}}">
+                  bon entree
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item font-weight-medium" href="#">
-                  Espanol
+                  bon sortie
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item font-weight-medium" href="#">
-                  Latin
+                  bon livraison
                 </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-medium" href="#">
-                  Arabic
-                </a>
+                <div class="dropdown-divider"></div>               
               </div>
             </div>
           </li>
@@ -161,7 +158,7 @@
               <img src="{{asset('assets/images/faces/face16.jpg')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{route('profile.edit', ['table' => 'dachboard'])}}">
                 <i class="fas fa-cog text-primary"></i>
                 Settings
               </a>
