@@ -15,7 +15,8 @@ class ConditionnementController extends Controller
     public function index()
     {
         $conditionnements = Conditionnement::all();
-        return view('conditionnements.index', compact('conditionnements'));
+        $table ='conditionnements';
+        return view('Backend.conditionnements.index', compact('conditionnements','table'));
     }
 
     /**
@@ -25,7 +26,8 @@ class ConditionnementController extends Controller
      */
     public function create()
     {
-        return view('conditionnements.create');
+        $table ='conditionnements';
+        return view('Backend.conditionnements.create', compact('table'));
     }
 
     /**
@@ -52,7 +54,7 @@ class ConditionnementController extends Controller
      */
     public function show(Conditionnement $conditionnement)
     {
-        return view('conditionnements.show', compact('conditionnement'));
+        return view('Backend.conditionnements.show', compact('conditionnement'));
     }
 
     /**
@@ -63,7 +65,8 @@ class ConditionnementController extends Controller
      */
     public function edit(Conditionnement $conditionnement)
     {
-        return view('conditionnements.edit', compact('conditionnement'));
+        $table ='familles';
+        return view('Backend.conditionnements.edit', compact('conditionnement','table'));
     }
 
     /**

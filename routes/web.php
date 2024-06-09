@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ConditionnementController;
 use App\Http\Controllers\FamilleController;
+use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +42,7 @@ Route::get('/admin/dachboard', function () {
 
 
 Route::resource('familles', FamilleController::class)->middleware(['auth', 'verified']);
+Route::resource('produits', ProduitController::class)->middleware(['auth', 'verified']);
+Route::resource('conditionnements', ConditionnementController::class)->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';

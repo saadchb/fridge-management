@@ -1,8 +1,8 @@
 @extends('layouts.admin.app')
-@section('title','Famille')
+@section('title','Conditionnement')
 @section('button_create')
 <li class="nav-item d-none d-lg-flex">
-  <a class="nav-link" href="{{route('familles.create')}}">
+  <a class="nav-link" href="{{ route('conditionnements.create') }}">
     <span class="btn btn-primary">+ Ajouteé</span>
   </a>
 </li>
@@ -32,11 +32,11 @@
 <div class="content-wrapper">
   <div class="page-header">
     <h3 class="page-title">
-     Les Familles
+     Les Conditionnements
     </h3>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/familles">Les Familles</a></li>
+        <li class="breadcrumb-item"><a href="/conditionnements">Les Conditionnements</a></li>
         <li class="breadcrumb-item active" aria-current="page">List</li>
       </ol>
     </nav>
@@ -46,7 +46,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">List Famille</h4>
+          <h4 class="card-title">List Conditionnement</h4>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -55,7 +55,7 @@
                     Id
                   </th>
                   <th>
-                    Famille
+                    Conditionnement
                   </th>
                   <th>
                     Actions
@@ -63,20 +63,20 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($familles as $famille)
+                @foreach($conditionnements as $conditionnement)
                 <tr>
                   <td class="py-1">
-                    {{$famille->id}}
+                    {{$conditionnement->id}}
                   </td>
                   <td>
-                    {{$famille->famille}}
+                    {{$conditionnement->conditionnement}}
                   </td>
                   <td>
-                     <a href="{{route('familles.edit', $famille->id)}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt btn-icon-append"></i> Modifier</a>
-                     <form action="{{ route('familles.destroy', $famille->id) }}" method="POST" style="display: inline;">
+                     <a href="{{route('conditionnements.edit', $conditionnement->id)}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt btn-icon-append"></i> Modifier</a>
+                     <form action="{{ route('conditionnements.destroy', $conditionnement->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette famille ?')"><i class="fas fa-trash"></i> Supprimer</button>
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette conditionnement ?')"><i class="fas fa-trash"></i> Supprimer</button>
                       </form>
                   </td>
                 </tr>
