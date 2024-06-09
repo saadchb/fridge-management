@@ -31,8 +31,7 @@
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/familles">Tous les Familles</a></li>
-                <li class="nav-item @if($table == 'familles')  active @endif"> <a class="nav-link" href="/familles/create">Ajouteé Famille</a></li>
-                <li class="nav-item @if($table == 'familles')  active @endif"> <a class="nav-link" href="/familles/{id}/edit">Modifier Famille</a></li>
+                <li class="nav-item @if($table == 'familles')  active  @endif"> <a class="nav-link" href="/familles/create">Ajouteé Famille</a></li>
               </ul>
             </div>
           </li>
@@ -46,7 +45,6 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/produits">Tous les Produits</a></li>
                 <li class="nav-item @if($table == 'produits')  active @endif"> <a class="nav-link" href="/produits/create">Ajouteé Produit</a></li>
-                <li class="nav-item @if($table == 'produits')  active @endif"> <a class="nav-link" href="/produits/{id}/edit">Modifier Produit</a></li>
               </ul>
             </div>
           </li>
@@ -60,7 +58,19 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/conditionnements">Tous les Conditionnements</a></li>
                 <li class="nav-item @if($table == 'conditionnements')  active @endif"> <a class="nav-link" href="/conditionnements/create">Ajouteé Conditionnement</a></li>
-                <li class="nav-item @if($table == 'conditionnements')  active @endif"> <a class="nav-link" href="/conditionnements/{id}/edit">Modifier Conditionnement</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item  @if($table == 'conditionnements')  active @endif">
+            <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+              <i class="fab fa-trello menu-icon"></i>
+              <span class="menu-title">Les Clients</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="page-layouts">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/clients">Tous les Clients</a></li>
+                <li class="nav-item @if($table == 'clients')  active @endif"> <a class="nav-link" href="/clients/create">Ajouteé Client</a></li>
               </ul>
             </div>
           </li>
