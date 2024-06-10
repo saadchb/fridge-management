@@ -1,57 +1,54 @@
 @extends('layouts.admin.app')
-@section('title','Modifier Famille')
+@section('title','Modifier famille')
 @section('content')
-<section class="section">
-    <div class="section-header">
-        <h1>Famille</h1>
-        <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="/familles">Famille</a></div>
-            <div class="breadcrumb-item">Modifier Famille {{$famille->libelle}}</div>
-        </div>
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
+        Les Familles
+        </h3>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/familles">Les Familles</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Modifier famille</li>
+        </ol>
+        </nav>
     </div>
-
-    <div class="section-body">
-        <div class="row">
-            <div class="col-12 col-md-12 col-lg-12">
-
-                <div class="card">
-                    <form action="{{route('familles.update',$famille->id)}}" method="Post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-                        <div class="card-header">
-                            <h4>Ajoutee nouvelle Famille</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Nom de Famille </label>
-                                <input type="text" value="{{$famille->libelle}}" name="libelle" class="form-control">
-                                @error('libelle')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label>image</label>
-                                <input type="file" name="image" value="$famille->image" class="form-control">
-                           <br>
-                                <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="active" value="{{$famille->active}}" class="custom-control-input" id="active" @if ($famille->active == 1) checked @endif>
-                                        <label class="custom-control-label" for="active">Afficher la famille dans la page d'accueil</label>
-                                    </div>
-                            @error('image')
-                            <div class="invalid-feedback">
-                                {{$message}}
-                            </div>
-                            @enderror </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Modifier Famille</h4>
+                <form action="{{ route('familles.update', $famille->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <p class="card-description">
                         
-                        <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">Enrégistre</button>
-                            <a href="/familles" class="btn btn-danger">annuler</a>
+                    </p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="famille">Famille </label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="famille" id="famille" value="{{$famille->famille}}">
+                                </div>
+                            </div>                          
+                            <center>
+                                <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+                                <a href="{{ route('familles.index') }}" class="btn btn-light">Annuler</a>
+                            </center>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</section>
+</div>
 @endsection

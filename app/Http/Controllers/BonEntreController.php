@@ -67,7 +67,7 @@ class BonEntreController extends Controller
             ]);
         }
 
-        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée créé avec succès.');
+        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée créé avec succès.');
     }
 
 
@@ -89,13 +89,13 @@ class BonEntreController extends Controller
     public function update(Request $request, BonEntre $bonEntre)
     {
         $bonEntre->update($request->all());
-        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée mis à jour avec succès.');
+        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée mis à jour avec succès.');
     }
 
     public function destroy(BonEntre $bonEntre)
     {
         $bonEntre->delete();
-        return redirect()->route('Backend.bonentres.index')->with('success', 'Bon d\'entrée supprimé avec succès.');
+        return redirect()->route('bonentres.index')->with('success', 'Bon d\'entrée supprimé avec succès.');
     }
 
     public function createDetail()
@@ -106,7 +106,7 @@ class BonEntreController extends Controller
     public function storeDetail(Request $request)
     {
         DetailBonEntre::create($request->all());
-        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée ajouté avec succès.');
+        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée ajouté avec succès.');
     }
 
     public function showDetail(DetailBonEntre $detailBonEntre)
@@ -122,12 +122,12 @@ class BonEntreController extends Controller
     public function updateDetail(Request $request, DetailBonEntre $detailBonEntre)
     {
         $detailBonEntre->update($request->all());
-        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée mis à jour avec succès.');
+        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée mis à jour avec succès.');
     }
 
     public function destroyDetail(DetailBonEntre $detailBonEntre)
     {
         $detailBonEntre->delete();
-        return redirect()->route('Backend.detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée supprimé avec succès.');
+        return redirect()->route('detail_bon_entre.index')->with('success', 'Détail du bon d\'entrée supprimé avec succès.');
     }
 }

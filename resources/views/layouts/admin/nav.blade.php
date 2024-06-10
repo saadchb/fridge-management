@@ -1,8 +1,8 @@
  <!-- partial:partials/_navbar.html -->
  <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="../../index-2.html"><img src="{{asset('assets/images/logo.svg')}}" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="../../index-2.html"><img src="{{asset('assets/images/logo-mini.svg')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="/"><img src="{{asset('assets/images/frigo_logo.png')}}" style="width:140px !important; height:85px; margin-right: 30px !important;" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><img src="{{asset('assets/images/mini_logo.png')}}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -32,11 +32,11 @@
                   bon entree
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-medium" href="#">
+                <a class="dropdown-item font-weight-medium" href="/bonsorts/create">
                   bon sortie
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-medium" href="#">
+                <a class="dropdown-item font-weight-medium" href="/bonlivrasons/create">
                   bon livraison
                 </a>
                 <div class="dropdown-divider"></div>               
@@ -98,7 +98,7 @@
               </a>
             </div>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-envelope mx-0"></i>
               <span class="count">25</span>
@@ -152,13 +152,13 @@
                 </div>
               </a>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="{{asset('assets/images/faces/face16.jpg')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item" href="{{route('profile.edit', ['table' => 'dachboard'])}}">
+              <a class="dropdown-item" href="{{route('profile.edit')}}">
                 <i class="fas fa-cog text-primary"></i>
                 Settings
               </a>

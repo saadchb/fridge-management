@@ -14,32 +14,36 @@ class BonLivrasonController extends Controller
 {
     public function index()
     {
+        $table = 'bonlev';
+
         $bons = BonLivrason::all();
-        return view('bonlivrasons.index', compact('bons'));
+        return view('Backend.bonlivrasons.index', compact('bons','table'));
     }
 
     public function create()
     {
+        $table = 'bonlev';
+
         $vendeurs = Vendeur::all();
         $clients = Client::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
-        return view('bonlivrasons.create', compact('vendeurs', 'clients', 'produits', 'conditionnements'));
+        return view('Backend.bonlivrasons.create', compact('vendeurs', 'clients', 'produits', 'conditionnements','table'));
     }
 
     public function store(Request $request)
     {
         // Validation des données
-        $request->validate([
-            'date' => 'required|date',
-            'observation' => 'nullable|string',
-            'vendeur_id' => 'required|numeric',
-            'client_id' => 'required|numeric',
-            'details.*.conditionnement_id' => 'required|numeric',
-            'details.*.produit_id' => 'required|numeric',
-            'details.*.qte' => 'required|numeric|min:1',
-            'details.*.prix_vente' => 'required|numeric|min:0',
-        ]);
+        // $request->validate([
+        //     'date' => 'required|date',
+        //     'observation' => 'nullable|string',
+        //     'vendeur_id' => 'required|numeric',
+        //     'client_id' => 'required|numeric',
+        //     'details.*.conditionnement_id' => 'required|numeric',
+        //     'details.*.produit_id' => 'required|numeric',
+        //     'details.*.qte' => 'required|numeric|min:1',
+        //     'details.*.prix_vente' => 'required|numeric|min:0',
+        // ]);
 
         // Création du bon de livraison
         $bonLivrason = BonLivrason::create([
@@ -51,7 +55,7 @@ class BonLivrasonController extends Controller
 
         // Ajout des détails du bon de livraison
         foreach ($request->input('details') as $detail) {
-            $details= DetailBonLivrason::create([
+             DetailBonLivrason::create([
                 'bon_livraison_id' => $bonLivrason->id,
                 'conditionnement_id' => $detail['conditionnement_id'],
                 'produit_id' => $detail['produit_id'],
@@ -60,17 +64,18 @@ class BonLivrasonController extends Controller
             ]);
         }
 
-        dd($details);
 
         return redirect()->route('bonlivraisons.index')->with('success', 'Bon de livraison créé avec succès.');
     }
     public function edit(BonLivrason $bon)
     {
+        $table = 'bonlev';
+
         $vendeurs = Vendeur::all();
         $clients = Client::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
-        return view('bonlivrasons.edit', compact('bon', 'vendeurs', 'clients', 'produits', 'conditionnements'));
+        return view('Backend.bonlivrasons.edit', compact('bon', 'vendeurs', 'clients', 'produits', 'conditionnements','table'));
     }
 
     public function update(Request $request, BonLivrason $bon)
@@ -81,7 +86,9 @@ class BonLivrasonController extends Controller
 
     public function show(BonLivrason $bon)
     {
-        return view('bonlivrasons.show', compact('bon'));
+        $table = 'bonlev';
+
+        return view('Backend.bonlivrasons.show', compact('bon','table'));
     }
 
     public function destroy(BonLivrason $bon)

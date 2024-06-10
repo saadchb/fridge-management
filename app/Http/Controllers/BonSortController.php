@@ -13,16 +13,18 @@ class BonSortController extends Controller
 {
     public function index()
     {
+        $table = 'bonsortie';
         $bonSorts = BonSort::all();
-        return view('bonsorts.index', compact('bonSorts'));
+        return view('Backend.bonsorts.index', compact('bonSorts','table'));
     }
 
     public function create()
     {
+        $table = 'bonsortie';
         $vendeurs = Vendeur::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
-        return view('bonsorts.create', compact('vendeurs', 'conditionnements', 'produits'));
+        return view('Backend.bonsorts.create', compact('vendeurs', 'conditionnements', 'produits','table'));
     }
 
     public function store(Request $request)
@@ -43,13 +45,15 @@ class BonSortController extends Controller
 
     public function show(BonSort $bonSort)
     {
-        return view('bonsorts.show', compact('bonSort'));
+        $table = 'bonsortie';
+        return view('Backend.bonsorts.show', compact('bonSort','table'));
     }
 
     public function edit(BonSort $bonSort)
     {
+        $table = 'bonsortie';
         $vendeurs = Vendeur::all();
-        return view('bonsorts.edit', compact('bonSort', 'vendeurs'));
+        return view('Backend.bonsorts.edit', compact('bonSort', 'vendeurs','table'));
     }
 
     public function update(Request $request, BonSort $bonSort)

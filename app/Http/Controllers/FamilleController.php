@@ -22,13 +22,17 @@ class FamilleController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'famille' => 'required|string|max:255',
+        ]);
         Famille::create($request->all());
         return redirect()->route('familles.index')->with('success', 'Famille ajoutée avec succès.');
     }
 
     public function edit(Famille $famille)
     {
-        return view('Backend.familles.edit', compact('famille'));
+        $table ='familles';
+        return view('Backend.familles.edit', compact('famille','table'));
     }
     public function show(Famille $famille)
     {

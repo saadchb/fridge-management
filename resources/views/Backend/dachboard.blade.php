@@ -17,23 +17,23 @@
                           <i class="icon-sm fa fa-user mr-2"></i>
                           Clients
                         </p>
-                        <h2>54000</h2>
+                        <h2>{{$clients}}</h2>
                         <label class="badge badge-outline-success badge-pill">2.7% increase</label>
                       </div>
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-hourglass-half mr-2"></i>
-                          Produits entres
+                         Produits Entrée
                         </p>
-                        <h2>123.50</h2>
+                        <h2>{{$bonentre}}</h2>
                         <label class="badge badge-outline-danger badge-pill">30% decrease</label>
                       </div>
                       <div class="statistics-item">
                         <p>
                           <i class="icon-sm fas fa-cloud-download-alt mr-2"></i>
-                          prdouits sortie
+                          Produits sortie
                         </p>
-                        <h2>3500</h2>
+                        <h2>{{$bonsorti}}</h2>
                         <label class="badge badge-outline-success badge-pill">12% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -41,7 +41,7 @@
                           <i class="icon-sm fas fa-check-circle mr-2"></i>
                           Produits
                         </p>
-                        <h2>7500</h2>
+                        <h2>{{$produits}}</h2>
                         <label class="badge badge-outline-success badge-pill">57% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -49,7 +49,7 @@
                           <i class="icon-sm fas fa-chart-line mr-2"></i>
                           Sales
                         </p>
-                        <h2>9000</h2>
+                        <h2>0</h2>
                         <label class="badge badge-outline-success badge-pill">10% increase</label>
                       </div>
                       <div class="statistics-item">
@@ -57,7 +57,7 @@
                           <i class="icon-sm fas fa-circle-notch mr-2"></i>
                           Pending
                         </p>
-                        <h2>7500</h2>
+                        <h2>0</h2>
                         <label class="badge badge-outline-danger badge-pill">16% decrease</label>
                       </div>
                   </div>
