@@ -15,7 +15,8 @@ class BonLivrasonController extends Controller
     public function index()
     {
         $bons = BonLivrason::all();
-        return view('bonlivrasons.index', compact('bons'));
+        $table ='bonlivrasons';
+        return view('Backend.bonlivrasons.index', compact('bons','table'));
     }
 
     public function create()
@@ -24,7 +25,8 @@ class BonLivrasonController extends Controller
         $clients = Client::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
-        return view('bonlivrasons.create', compact('vendeurs', 'clients', 'produits', 'conditionnements'));
+        $table ='bonlivrasons';
+        return view('Backend.bonlivrasons.create', compact('vendeurs', 'clients', 'produits', 'conditionnements','table'));
     }
 
     public function store(Request $request)
@@ -62,7 +64,7 @@ class BonLivrasonController extends Controller
 
         dd($details);
 
-        return redirect()->route('bonlivraisons.index')->with('success', 'Bon de livraison créé avec succès.');
+        return redirect()->route('bonlivrasons.index')->with('success', 'Bon de livraison créé avec succès.');
     }
     public function edit(BonLivrason $bon)
     {
@@ -70,7 +72,7 @@ class BonLivrasonController extends Controller
         $clients = Client::all();
         $produits = Produit::all();
         $conditionnements = Conditionnement::all();
-        return view('bonlivrasons.edit', compact('bon', 'vendeurs', 'clients', 'produits', 'conditionnements'));
+        return view('Backend.bonlivrasons.edit', compact('bon', 'vendeurs', 'clients', 'produits', 'conditionnements'));
     }
 
     public function update(Request $request, BonLivrason $bon)
@@ -81,7 +83,7 @@ class BonLivrasonController extends Controller
 
     public function show(BonLivrason $bon)
     {
-        return view('bonlivrasons.show', compact('bon'));
+        return view('Backend.bonlivrasons.show', compact('bon'));
     }
 
     public function destroy(BonLivrason $bon)

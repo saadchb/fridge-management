@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BonLivrasonController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ConditionnementController;
 use App\Http\Controllers\FamilleController;
@@ -46,5 +47,6 @@ Route::resource('familles', FamilleController::class)->middleware(['auth', 'veri
 Route::resource('produits', ProduitController::class)->middleware(['auth', 'verified']);
 Route::resource('conditionnements', ConditionnementController::class)->middleware(['auth', 'verified']);
 Route::resource('clients', ClientController::class)->middleware(['auth', 'verified']);
+Route::resource('bonlivrasons', BonLivrasonController::class)->middleware(['auth', 'verified']);
 
 require __DIR__ . '/auth.php';
