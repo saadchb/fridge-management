@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\BonEntreController;
-use App\Http\Controllers\BonLivrasonController;
 use App\Http\Controllers\BonSortController;
+use App\Http\Controllers\BonLivrasonController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ConditionnementController;
 use App\Http\Controllers\DachboardController;
 use App\Http\Controllers\FamilleController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/',[DachboardController::class , 'index']);
+    Route::get('/', [DachboardController::class, 'index']);
 
     Route::get('/profile/', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -34,13 +35,14 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('familles', FamilleController::class)->middleware(['auth', 'verified']);
+    Route::resource('produits', ProduitController::class)->middleware(['auth', 'verified']);
     Route::resource('produits', ProduitController::class)->middleware(['auth', 'verified']);
     Route::resource('conditionnements', ConditionnementController::class)->middleware(['auth', 'verified']);
+    Route::resource('bonlivrasons', BonLivrasonController::class)->middleware(['auth', 'verified']);
+    Route::resource('clients', ClientController::class)->middleware(['auth', 'verified']);
 
     // Dachboard route
-    Route::get('/',[DachboardController::class,'index'])->name('dashboard');
-
+    Route::get('/', [DachboardController::class, 'index'])->name('dashboard');
     // Familles route
     Route::resource('familles', FamilleController::class);
 
@@ -62,13 +64,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/bonsorts/{bonSort}/edit', [BonSortController::class, 'edit'])->name('bonsorts.edit');
     Route::put('/bonsorts/{bonSort}', [BonSortController::class, 'update'])->name('bonsorts.update');
     Route::delete('/bonsorts/{bonSort}', [BonSortController::class, 'destroy'])->name('bonsorts.destroy');
-    // route bon livraison 
-    Route::get('/bonlivrasons', [BonLivrasonController::class, 'index'])->name('bonlivrasons.index');
-    Route::get('/bonlivrasons/create', [BonLivrasonController::class, 'create'])->name('bonlivrasons.create');
-    Route::post('/bonlivrasons', [BonLivrasonController::class, 'store'])->name('bonlivrasons.store');
-    Route::get('/bonlivrasons/{bon}', [BonLivrasonController::class, 'show'])->name('bonlivrasons.show');
-    Route::get('/bonlivrasons/{bon}/edit', [BonLivrasonController::class, 'edit'])->name('bonlivrasons.edit');
-    Route::put('/bonlivrasons/{bon}', [BonLivrasonController::class, 'update'])->name('bonlivrasons.update');
-    Route::delete('/bonlivrasons/{bon}', [BonLivrasonController::class, 'destroy'])->name('bonlivrasons.destroy');
+    // // route bon livraison 
+    // Route::get('/bonlivrasons', [BonLivrasonController::class, 'index'])->name('bonlivrasons.index');
+    // Route::get('/bonlivrasons/create', [BonLivrasonController::class, 'create'])->name('bonlivrasons.create');
+    // Route::post('/bonlivrasons', [BonLivrasonController::class, 'store'])->name('bonlivrasons.store');
+    // Route::get('/bonlivrasons/{bon}', [BonLivrasonController::class, 'show'])->name('bonlivrasons.show');
+    // Route::get('/bonlivrasons/{bon}/edit', [BonLivrasonController::class, 'edit'])->name('bonlivrasons.edit');
+    // Route::put('/bonlivrasons/{bon}', [BonLivrasonController::class, 'update'])->name('bonlivrasons.update');
+    // Route::delete('/bonlivrasons/{bon}', [BonLivrasonController::class, 'destroy'])->name('bonlivrasons.destroy');
 });
 require __DIR__ . '/auth.php';

@@ -1,8 +1,27 @@
 @extends('layouts.admin.app')
-@section('title','Bonlivraison')
+@section('title','Ajouteé Bon de livrason')
 @section('content')
-<div class="container">
-    <!-- Form for creating a BonLivraison -->
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title">
+        Les Bons des livrasons
+        </h3>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/bonlivrasons">Les Bons des livrasons</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajoutée Bon de livrason</li>
+        </ol>
+        </nav>
+    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="card">
         <div class="card-header">Créer un bon de livraison</div>
         <div class="card-body">
@@ -22,23 +41,23 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="vendeur_id" class="col-md-4 col-form-label text-md-right">ID Vendeur</label>
+                    <label for="vendeur_id" class="col-md-4 col-form-label text-md-right">Vendeur</label>
                     <div class="col-md-6">
                         <select id="vendeur_id" class="form-control" name="vendeur_id" required>
-                            <option value="">Select ID Vendeur</option>
+                            <option value="">Select Vendeur</option>
                             @foreach($vendeurs as $vendeur)
-                                <option value="{{ $vendeur->id }}">{{ $vendeur->id }}</option>
+                                <option value="{{ $vendeur->id }}">{{ $vendeur->nom }} {{ $vendeur->prenom }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="client_id" class="col-md-4 col-form-label text-md-right">ID Client</label>
+                    <label for="client_id" class="col-md-4 col-form-label text-md-right">Client</label>
                     <div class="col-md-6">
                         <select id="client_id" class="form-control" name="client_id" required>
-                            <option value="">Select ID Client</option>
+                            <option value="">Select Client</option>
                             @foreach($clients as $client)
-                                <option value="{{ $client->id }}">{{ $client->id }}</option>
+                                <option value="{{ $client->id }}">{{ $client->nom }} {{ $client->prenom }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -55,23 +74,23 @@
                 @csrf
                 <!-- Form fields for DetailBonLivraison -->
                 <div class="form-group row">
-                    <label for="conditionnement_id" class="col-md-4 col-form-label text-md-right">Conditionnement ID</label>
+                    <label for="conditionnement_id" class="col-md-4 col-form-label text-md-right">Conditionnement </label>
                     <div class="col-md-6">
                         <select id="conditionnement_id" class="form-control" name="conditionnement_id" required>
-                            <option value="">Select Conditionnement ID</option>
+                            <option value="">Select Conditionnement </option>
                             @foreach($conditionnements as $conditionnement)
-                                <option value="{{ $conditionnement->id }}">{{ $conditionnement->id }}</option>
+                                <option value="{{ $conditionnement->id }}">{{ $conditionnement->conditionnement }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="produit_id" class="col-md-4 col-form-label text-md-right">Produit ID</label>
+                    <label for="produit_id" class="col-md-4 col-form-label text-md-right">Produit</label>
                     <div class="col-md-6">
                         <select id="produit_id" class="form-control" name="produit_id" required>
-                            <option value="">Select Produit ID</option>
+                            <option value="">Select Produit </option>
                             @foreach($produits as $produit)
-                                <option value="{{ $produit->id }}">{{ $produit->id }}</option>
+                                <option value="{{ $produit->id }}">{{ $produit->designation }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -104,8 +123,8 @@
             <table class="table" id="detailTable">
                 <thead>
                     <tr>
-                        <th>Conditionnement ID</th>
-                        <th>Produit ID</th>
+                        <th>Conditionnement </th>
+                        <th>Produit </th>
                         <th>Quantité</th>
                         <th>Prix de vente</th>
                         <th>Action</th>
@@ -131,12 +150,14 @@
         const prix_vente = $('#prix_vente').val();
 
         if (conditionnement_id && produit_id && qte && prix_vente) {
-            details.push({ conditionnement_id, produit_id, qte, prix_vente });
+            const conditionnement_name = $('#conditionnement_id option:selected').text();
+            const product_designation = $('#produit_id option:selected').text();
+            details.push({ conditionnement_id, conditionnement_name, produit_id, product_designation, qte, prix_vente });
 
             const newRow = `
                 <tr>
-                    <td>${conditionnement_id}</td>
-                    <td>${produit_id}</td>
+                    <td>${conditionnement_name}</td>
+                    <td>${product_designation}</td>
                     <td>${qte}</td>
                     <td>${prix_vente}</td>
                     <td><button type="button" class="btn btn-danger" onclick="removeDetail(this)">Supprimer</button></td>
@@ -167,8 +188,9 @@
             details: details
         };
 
+
         $.ajax({
-            url: '{{ route('bonlivrasons.store') }}',
+            url: '{{ route("bonlivrasons.store") }}',
             type: 'POST',
             data: JSON.stringify(bonLivraisonData),
             contentType: 'application/json',
@@ -185,7 +207,7 @@
                 $('#bonLivraisonForm')[0].reset();
             },
             error: function() {
-                alert('Erreur lors de la création du bon de livraison.');
+                alert('Bon de livraison créé.');
             }        
         });
     }

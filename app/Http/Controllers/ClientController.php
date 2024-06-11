@@ -10,19 +10,22 @@ class ClientController extends Controller
 {
     public function index()
     {
+        $table ='clients';
         $clients = Client::all(); // Récupère tous les clients depuis la base de données
-        return view('clients.index', compact('clients')); // Passe les clients à la vue 'clients.index'
+        return view('Backend.clients.index', compact('clients','table')); // Passe les clients à la vue 'clients.index'
     }
    
     public function create()
     {
         $vendeurs = Vendeur::all();
-        return view('clients.create', compact('vendeurs')); // Retourne la vue de création de client
+        $table ='clients';
+        return view('Backend.clients.create', compact('vendeurs','table')); // Retourne la vue de création de client
     }
 // Affiche les détails d'un client spécifique
 public function show(Client $client)
 {
-    return view('clients.show', compact('client')); // Retourne la vue 'clients.show' en passant le client à afficher
+    $table ='clients';
+    return view('Backend.clients.show', compact('client','table')); // Retourne la vue 'clients.show' en passant le client à afficher
 }
 
     public function store(Request $request)
@@ -44,7 +47,9 @@ public function show(Client $client)
 
     public function edit(Client $client)
 {
-    return view('clients.edit', compact('client'));
+    $vendeurs = Vendeur::all();
+    $table ='clients';
+    return view('Backend.clients.edit', compact('client','vendeurs','table'));
 }
 
 

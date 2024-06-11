@@ -1,7 +1,8 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
-      <div class="nav-link">        <div class="profile-image">
+      <div class="nav-link">
+        <div class="profile-image">
           <img src="{{asset('assets/images/faces/face16.jpg')}}" alt="image" />
         </div>
         <div class="profile-name">
@@ -62,10 +63,36 @@
         </ul>
       </div>
     </li>
+    <!-- <li class="nav-item  @if($table == 'conditionnements')  active @endif">
+      <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+        <i class="fab fa-trello menu-icon"></i>
+        <span class="menu-title">Les Clients</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="page-layouts">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/clients">Tous les Clients</a></li>
+          <li class="nav-item @if($table == 'clients')  active @endif"> <a class="nav-link" href="/clients/create">Ajouteé Client</a></li>
+        </ul>
+      </div>
+    </li> -->
+    <li class="nav-item  @if($table == 'conditionnements')  active @endif">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+        <i class="fas fa-users menu-icon"></i>
+        <span class="menu-title">Les Clients</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="auth" style="">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="/clients">Tous les Clients</a></li>
+          <li class="nav-item @if($table == 'clients')  active @endif"> <a class="nav-link" href="/clients/create">Ajouteé Client</a></li>
+        </ul>
+      </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-      <i class="fas fa-file-invoice-dollar menu-icon"></i>
-              <span class="menu-title">List du Bon...</span>
+        <i class="fas fa-file-invoice-dollar menu-icon"></i>
+        <span class="menu-title">List du Bon...</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
@@ -73,7 +100,7 @@
           <li class="nav-item"> <a class="nav-link" href="{{ route('bonentres.index') }}"> d'entree</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('bonsorts.index') }}"> sortie</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('bonlivrasons.index') }}"> livraison</a></li>
-  
+
         </ul>
       </div>
     </li>
